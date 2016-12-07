@@ -11,9 +11,10 @@ def red_math(filename):
   re_object = re.compile('{.*}')
   re_red = re.compile(r':\"red\"')
   #parse all numbers not within { }
-  input = open(filename, 'rU')
-  parsed_input = json.load(input)
-  parsed_input.values()
+  #input = open(filename, 'rU')
+  with open(filename) as f:
+    parsed_file = json.load(f)
+  print rsum(parsed_file)
   return total
 
 def elf_math(filename):

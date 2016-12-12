@@ -5,16 +5,36 @@ import sys
 import re
 import json
 
+def red_sum(file):
+  reds = 0
+  if isinstance(file, dict):
+    #loaded a dict, go deeper
+    if "red" in file.values:
+      #it's red, add all numbers
+  elif isintance(file, list):
+    #loaded a list, go deeper
+  return reds
+
 def red_math(filename):
   total = 0
+  red_total = 0
   re_numbers = re.compile('(-?\d+)')
   re_object = re.compile('{.*}')
   re_red = re.compile(r':\"red\"')
   #parse all numbers not within { }
   #input = open(filename, 'rU')
+  #calculate the grand total
+  total = elf_math(filename)
+  #open the file in json to make stuff objects and whatever
   with open(filename) as f:
     parsed_file = json.load(f)
-  print rsum(parsed_file)
+  #calculate all reds
+  reds = red_sum(parsed_file)
+  #get all red numbers, subtract from total
+  #red_vals = re.findall(re_numbers, reds)
+  #for x in red_vals
+    #red_total += int(x)
+  total = total - red_total
   return total
 
 def elf_math(filename):
